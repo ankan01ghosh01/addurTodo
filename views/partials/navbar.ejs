@@ -1,0 +1,115 @@
+<header
+    class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+
+    <nav class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
+        <!-- LEFT -->
+        <div class="flex items-center gap-10">
+
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-extrabold text-blue-700 dark:text-blue-400 tracking-tight">
+                your tOdO
+            </a>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+                <a href="/addtodo" class="<%= active === 'addtodo' 
+                    ? 'text-blue-600 border-b-2 border-blue-600 pb-1' 
+                    : 'text-slate-500 hover:text-blue-600 transition' %>">
+                    Add To Do
+                </a>
+
+                <a href="/team" class="<%= active === 'team' 
+                    ? 'text-blue-600 border-b-2 border-blue-600 pb-1' 
+                    : 'text-slate-500 hover:text-blue-600 transition' %>">
+                    Team
+                </a>
+
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="flex items-center gap-4">
+
+            <!-- Notification -->
+            <div class="relative">
+                <button id="notifBtn" class="material-symbols-outlined text-slate-500 hover:bg-slate-100 p-2 rounded-full">
+                    notifications
+                </button>
+            
+                <div id="notifDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white shadow-lg rounded-xl p-3 space-y-2 z-50">
+                    <span class="text-red-500">no notification</span> 
+                </div>
+            </div>
+
+            <!-- New Task -->
+            <a href="/addtodo"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-sm transition">
+                New Task
+            </a>
+
+            <!-- Auth Section -->
+            <% if (!users) { %>
+                <a href="/sing-upPage"
+                    class="text-green-700 hover:text-blue-800">
+                    Sign Up
+                </a>
+
+                <% } else { %>
+
+                    <!-- Profile Dropdown -->
+                    <div class="relative group">
+
+                        <button
+                            class="flex items-center gap-2 px-3 py-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                            <span class="material-symbols-outlined text-slate-600">account_circle</span>
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                                <%= users.fullName %>
+                            </span>
+                        </button>
+
+                        <!-- Dropdown -->
+                        <div
+                            class="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+
+                            <div class="p-3 border-b border-slate-200 dark:border-slate-700">
+                                <p class="text-sm font-semibold">
+                                    <%= users.fullName %>
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    <%= users.email %>
+                                </p>
+                            </div>
+
+                            <a href="/profile"
+                                class="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
+                                Profile
+                            </a>
+
+                            <a href="/settings"
+                                class="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
+                                Settings
+                            </a>
+
+                            <a href="/analytics"
+                                class="block px-4 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-800">
+                                Analytics
+                            </a>
+
+                            <div class="border-t border-slate-200 dark:border-slate-700 mt-1"></div>
+
+                            <a href="/logout"
+                                class="block px-4 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20">
+                                Logout
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <% } %>
+
+        </div>
+
+    </nav>
+</header>

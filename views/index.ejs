@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>toDo list</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/useinall.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#005db6",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-container": "#1d6e25",
+                        "secondary": "#795900",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c2c6d4",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-container": "#005eb8",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed": "#a3f69c",
+                        "on-primary-fixed-variant": "#00468c",
+                        "on-primary-fixed": "#001b3d",
+                        "surface-container": "#eceef0",
+                        "primary": "#00478d",
+                        "on-tertiary-fixed": "#002204",
+                        "outline": "#727783",
+                        "on-secondary-container": "#6d5000",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdfa0",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-fixed": "#261a00",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#ffbf00",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#a9c7ff",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-surface": "#191c1e",
+                        "on-primary-container": "#c8daff",
+                        "surface-bright": "#f7f9fb",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-container": "#9bee94",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-background": "#191c1e",
+                        "tertiary": "#005412"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="bg-surface text-on-surface">
+    <!-- Top Navigation Bar -->
+    <%- include('./partials/navbar.ejs') %>
+    <main>
+        <!-- Hero Section -->
+        <section class="mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12 h-screen">
+            <div class="flex-1 space-y-10 flex flex-col items-center text-center">
+            
+                <span
+                    class="inline-block py-2 px-5 bg-primary-fixed text-on-primary-fixed rounded-full text-sm font-bold uppercase tracking-widest">
+                    Version 2.0 Now Live
+                </span>
+            
+                <h1 class="text-7xl md:text-8xl lg:text-9xl font-extrabold text-on-surface leading-[1.05] tracking-tight">
+                    Design Your Day,<br />
+                    <span class="text-primary">Architect Your Life</span>
+                </h1>
+            
+                <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed">
+                    A productivity canvas built for clarity. Structure your workflows with architectural precision and fluid
+                    simplicity.
+                </p>
+            
+                <div class="flex gap-6 items-center justify-center mt-6">
+                    <a href="/addtodo">
+                        <button
+                            class="bg-primary-gradient text-on-primary px-10 py-5 rounded-full text-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                            Get Started Free
+                        </button>
+                    </a>
+                </div>
+            
+            </div>
+        </section>
+        <!-- Features Bento Grid -->
+        <section class="bg-surface-container-low py-24">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold mb-4">Engineered for Focus</h2>
+                    <p class="text-on-surface-variant">The tools you need, exactly where you need them.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Smart Scheduling -->
+                    <div
+                        class="md:col-span-2 bg-surface-container-lowest p-8 rounded-3xl flex flex-col justify-between group hover:bg-surface-bright transition-all duration-500">
+                        <div class="max-w-md">
+                            <span class="material-symbols-outlined text-primary text-4xl mb-6"
+                                style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                            <h3 class="text-2xl font-bold mb-4">Smart Scheduling</h3>
+                            <p class="text-on-surface-variant leading-relaxed">Our AI-driven engine analyzes your work
+                                patterns to
+                                suggest the perfect time for deep focus and collaborative meetings.</p>
+                        </div>
+                        <div class="mt-8 overflow-hidden rounded-xl bg-surface-container-low p-4 h-48">
+                            <img class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700"
+                                data-alt="Abstract visualization of a digital calendar with glowing task blocks and elegant line work representing time flow."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5m2JBDamZENrqQeXVwUVZpLrGTzKn5JPp3FPBB_KMVOAbsWW9OKgrBLVYb3uer2ISiEiWs2xPgHF3QhGdNOfF4kBXDK40wfkOicV7v-10hTKdO7LclN3iqkKFAGUlYGesxZv-yF2Zs87YN0vLC9jCLkUitCus-VwTSkKprDIqhikzvbTwz0uMTcO98mdV1Es3_kupp7BFXlFSFXpBZiUn0Ono6BoKvVzP-159Kmw9cGPlELhDKj3EN_fv6agaBrn6kAS0h4WUI4o" />
+                        </div>
+                    </div>
+                    <!-- Collaborative Workspaces -->
+                    <div class="bg-primary-gradient p-8 rounded-3xl text-white flex flex-col justify-between">
+                        <div>
+                            <span class="material-symbols-outlined text-white text-4xl mb-6">group_work</span>
+                            <h3 class="text-2xl font-bold mb-4">Collaborative Workspaces</h3>
+                            <p class="text-on-primary-container/80 leading-relaxed">Shared canvases for teams to align,
+                                assign, and
+                                achieve goals together in real-time.</p>
+                        </div>
+                        <div class="flex -space-x-3 mt-8">
+                            <div class="w-10 h-10 rounded-full border-2 border-primary bg-slate-200 overflow-hidden">
+                                <img class="w-full h-full object-cover"
+                                    data-alt="Close-up portrait of a diverse team member smiling in a professional setting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfFysEzhxvnWMBhMNsXRZ2Rz-yvM0GgYta0ywMRW7hNxn3Q6t3zjbMrN-s3lZYpYFaVvUfvvZmyNNOqysaRhmn_DVtvl9o7n6gcytbWbW2wB09kvHUVLD0vaZQgamPYQwMAwvf4eB5Cf0tlYObeuK8X5LwnfDuE_pPROrSTWiqd5fF5EmJLgJ2nDac5YjsAMA6xjh1_u4zrtSIn3BRf7fAowVHFCNmzqnfIIELY54M9p_bkQtj0JNNbeSYE1tPm_0YOt-G22ijsis" />
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-primary bg-slate-200 overflow-hidden">
+                                <img class="w-full h-full object-cover"
+                                    data-alt="Portrait of a young professional with glasses in a minimalist modern office"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuABItx1i_a29NahzuKr7utZHUhpbXRLj-iqMinWUefYbIBBYa8dP8VfvZQy64q7xO0o5zd9JxzEevl0wlH10S9qdjW1D1TxEtW5ZHvIMZjOvnlqjEIr5smkIu3A4d5p2MVw_goTChIlSRfN8hzfj0rMMfISMk3l2MglU3rgbUrbKFX6g99ur0TGbXuTJZCGcjEjGw8qeN5FKfLNwJXfnOltUOianQhIMAKixXOMAPPziH0Wx0ZsWk2loH5zO4cJHpxwwybRO5G8VMU" />
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-primary bg-slate-200 overflow-hidden">
+                                <img class="w-full h-full object-cover"
+                                    data-alt="Smiling entrepreneur in a creative studio environment with soft natural lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyd-5pf8SXlsS56uThRTjg_iHbfNNWrQBGr3WSwRGZD3vlc8R99TlivXoTNFHbiim4e16EbuZjwjiuG5ne9gQ9zFelr7zEuuzsHF4Ok-HxbHql8-7prBMiAj-Yj75sOZJb3qp7WQaJtTSCfZW6viG4XMVqKVtDOortlYGZbW1leHbta1zBwrqEIETXP1bcSvoVYuJXxYqgRNrFJ1aIfIwAGC8mEkNPEhSosyAexh9APsViRgEqUKUuZT9VYo-i1g0lavHxBrrvpJg" />
+                            </div>
+                            <div
+                                class="w-10 h-10 rounded-full border-2 border-primary bg-blue-400 flex items-center justify-center text-xs font-bold">
+                                +12</div>
+                        </div>
+                    </div>
+                    <!-- Progress Insights -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-3xl group hover:bg-surface-bright transition-all">
+                        <span class="material-symbols-outlined text-tertiary text-4xl mb-6">analytics</span>
+                        <h3 class="text-2xl font-bold mb-4">Progress Insights</h3>
+                        <p class="text-on-surface-variant leading-relaxed">Detailed analytics that go beyond completion
+                            rates.
+                            Understand your flow state and peak performance times.</p>
+                        <div class="mt-8 flex items-end gap-2 h-24">
+                            <div
+                                class="flex-1 bg-tertiary-fixed-dim h-1/2 rounded-t-lg group-hover:h-3/4 transition-all duration-700">
+                            </div>
+                            <div
+                                class="flex-1 bg-tertiary h-2/3 rounded-t-lg group-hover:h-full transition-all duration-700">
+                            </div>
+                            <div
+                                class="flex-1 bg-tertiary-fixed-dim h-1/3 rounded-t-lg group-hover:h-1/2 transition-all duration-700">
+                            </div>
+                            <div
+                                class="flex-1 bg-tertiary-fixed-dim h-3/4 rounded-t-lg group-hover:h-2/3 transition-all duration-700">
+                            </div>
+                            <div
+                                class="flex-1 bg-tertiary h-1/2 rounded-t-lg group-hover:h-5/6 transition-all duration-700">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional Context Card -->
+                    <div
+                        class="md:col-span-2 bg-white p-8 rounded-3xl flex items-center gap-8 border border-surface-container-high">
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">Built for the Modern Architect</h3>
+                            <p class="text-on-surface-variant">Whether you're building a company or a routine, Architect
+                                provides the
+                                structure for excellence.</p>
+                        </div>
+                        <div class="hidden lg:block w-48 h-32 rounded-xl bg-surface-container overflow-hidden">
+                            <img class="w-full h-full object-cover grayscale opacity-50"
+                                data-alt="Clean minimal architectural structure with clean lines and soft shadows, symbolizing structural integrity and clarity."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwrZmZl77eAhHGViaZoMHMBoNWGjX5wCYDE3CO_hE5y5hWfwY-wR59zJZvPPcTKdlTmrGruxtMHttwkglLYSWMyRDMCxmJ0AY0XS4wzfx_usBQR661YYYUtnUEdqBQTPDm0w9KB-TdROMM-Fg7-ZgEIu25r1yjJ2xWEDHCPCB9K2gfgkBpgzjuHsWVd4VPPVRQwE5s-2vIdIB9LS4q-H6gMc6qryUc8t7Y_oH9vsTIyG4ExWSnlxnhLdR1FbLjiSDJv2tFAmgygXY" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-24 max-w-7xl mx-auto px-8">
+            <div class="bg-on-surface text-surface rounded-[3rem] p-16 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 blur-[120px] rounded-full"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary/20 blur-[120px] rounded-full"></div>
+                <h2 class="text-5xl font-extrabold mb-8 relative z-10">Ready to build your <br /> most productive self?
+                </h2>
+                <p class="text-surface-variant/80 text-lg max-w-2xl mx-auto mb-10 relative z-10">Join over 50,000
+                    creators,
+                    engineers, and thinkers who use Architect to structure their success every single day.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                    <a href="/addtodo">
+                        <button
+                            class="bg-primary-gradient text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl hover:scale-105 transition-transform">Start
+                            Free Trial
+                        </button>
+                    </a>
+                </div>
+                <p class="mt-8 text-sm text-surface-variant/60 font-medium tracking-wide uppercase">No credit card
+                    required •
+                    Instant access</p>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <%- include('./partials/footer.ejs') %>
+    <script src="/scripts/navbar-footer.js"></script>
+</body>
+
+</html>

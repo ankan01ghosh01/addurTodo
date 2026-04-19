@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MinimalistFocus - Task Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/useinall.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#fbbc00",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#9bee94",
+                        "secondary": "#795900",
+                        "surface-tint": "#005db6",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#005eb8",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005412",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdfa0",
+                        "on-primary-container": "#c8daff",
+                        "surface": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "outline-variant": "#c2c6d4",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#261a00",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001b3d",
+                        "tertiary-container": "#1d6e25",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#6d5000",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed-variant": "#00468c",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#a3f69c",
+                        "primary": "#00478d",
+                        "on-surface-variant": "#424752",
+                        "inverse-on-surface": "#eff1f3",
+                        "outline": "#727783",
+                        "secondary-container": "#ffbf00",
+                        "on-surface": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface min-h-screen">
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+        <%- include('./partials/navbar.ejs') %>
+    </header>
+    <main class="pt-32 pb-20 px-6 max-w-2xl mx-auto">
+        <!-- Header Section -->
+        <section class="mb-12">
+            <h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-2">My Day</h1>
+            <p class="text-on-surface-variant font-label text-sm uppercase tracking-widest opacity-70">
+                <%= dayName %>,<b class="text-blue-800"><%= month %>  <%= date %>  <%= year %></b> 
+            </p>
+        </section>
+        <!-- Input Area -->
+        <section class="mb-10">
+            <div
+                class="group relative bg-surface-container-low rounded-xl p-1 transition-all focus-within:ring-2 focus-within:ring-primary-fixed-dim">
+                <form class="flex items-center" action="/addYour-todo" method="post">
+                    <div class="pl-4 pr-2">
+                        <span class="material-symbols-outlined text-outline">add</span>
+                    </div>
+                    <input
+                        class="w-full bg-transparent border-none focus:ring-0 py-3 text-on-surface placeholder:text-outline font-body text-lg"
+                        placeholder="Add a new task..." type="text" name="your_task"/>
+                    <button
+                        class="mr-1 bg-gradient-to-br from-primary to-primary-container text-on-primary p-2 rounded-lg shadow-sm active:scale-95 transition-all">
+                        <span class="material-symbols-outlined">arrow_upward</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+        <!-- Filters -->
+        <section class="flex items-center space-x-6 mb-6 px-2">
+        
+            <a href="/addtodo?filter=all"
+                class="font-label text-sm <%= filter === 'all' ? 'font-semibold text-primary border-b-2 border-primary' : 'text-on-surface-variant' %> pb-1">
+                All
+            </a>
+        
+            <a href="/addtodo?filter=active"
+                class="font-label text-sm <%= filter === 'active' ? 'font-semibold text-primary border-b-2 border-primary' : 'text-on-surface-variant' %> pb-1">
+                Active
+            </a>
+        
+            <a href="/addtodo?filter=completed"
+                class="font-label text-sm <%= filter === 'completed' ? 'font-semibold text-primary border-b-2 border-primary' : 'text-on-surface-variant' %> pb-1">
+                Completed
+            </a>
+        
+        </section>
+        <!-- Task List -->
+        <section class="space-y-4">
+
+            <% tasks.forEach(task=> { %>
+
+                <div
+                    class="group flex items-center bg-surface-container-lowest p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+
+                    <!-- ✅ Checkbox (Update Status) -->
+                    <form action="/update-task/<%= task.id %>" method="POST" class="mr-4">
+                        <input type="checkbox" onchange="this.form.submit()" <%=task.task_status ? "checked" : "" %>
+                        >
+                    </form>
+
+                    <!-- Task Text -->
+                    <div class="flex-grow font-body transition-all duration-200 <%= task.task_status ? 'line-through text-gray-400' : 'text-on-surface' %>">
+                        <%= task.task %>
+                    </div>
+
+                    <!-- ✅ Delete Button -->
+                    <form action="/delete-task/<%= task.id %>" method="POST">
+                        <button type="submit"
+                            class="opacity-0 group-hover:opacity-100 p-2 hover:bg-error-container/20 rounded-lg transition-all">
+                            <span class="material-symbols-outlined text-error text-xl">
+                                delete
+                            </span>
+                            <span>
+
+                            </span>
+                        </button>
+                    </form>
+
+                </div>
+
+                <% }) %>
+
+        </section>
+
+        <!-- Footer Stats -->
+        <footer class="mt-8 px-4 flex justify-between items-center border-t border-surface-container-high pt-6">
+            <span class="font-label text-sm text-on-surface-variant">
+                Total task: <%= tasks.length %>
+            </span>
+            <button class="text-primary hover:underline font-label text-sm font-semibold">Clear Completed</button>
+        </footer>
+    </main>
+    <!-- Floating Empty State Decorator (Contextual) -->
+    <aside class="hidden lg:block fixed right-12 bottom-12 w-64">
+        <div class="bg-surface-container-low p-6 rounded-2xl">
+            <div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-on-primary-fixed">lightbulb</span>
+            </div>
+            <h3 class="font-headline font-bold text-on-surface mb-2">Productivity Tip</h3>
+            <p class="font-body text-sm text-on-surface-variant leading-relaxed">Break your large goals into smaller,
+                manageable tasks to maintain momentum throughout the day.</p>
+        </div>
+    </aside>
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="/scripts/navbar-footer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .headline {
+    font-family: 'Manrope', sans-serif;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.tonal-transition {
+    transition: background-color 0.3s ease;
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(135deg, #00478d 0%, #005eb8 100%);
+}
